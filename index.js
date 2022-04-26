@@ -4,9 +4,6 @@ const cors = require('cors')
 const app = express()
 const logger = require('./loggerMiddleware')
 
-const port = 3000
-const hostname = '127.0.0.1'
-
 app.use(cors())
 app.use(express.json()) // para poder parsear las request
 
@@ -94,6 +91,9 @@ app.use((request, response) => {
   })
 })
 
-app.listen(port, () => {
-  console.log(`Server running at http://${hostname}:${port}/`)
+const PORT = process.env.PORT || 3000
+const hostname = '127.0.0.1'
+
+app.listen(PORT, () => {
+  console.log(`Server running at http://${hostname}:${PORT}/`)
 })
